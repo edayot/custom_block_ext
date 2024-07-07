@@ -39,7 +39,7 @@ match = ["custom_block_ext:**"]
 
 
 [tool.beet.data_pack]
-name = "custom_block_ext_{{ project_version }}_dp_bundled"
+name = "custom_block_ext_{{ project_version }}_dp"
 load = "."
 pack_format = 48
 zipped = true
