@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "custom_block_ext"
+version = "0.1.0"
+description = ""
+authors = ["edayot <pro.e.dayot@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beet = {git = "https://github.com/TheNuclearNexus/beet.git", branch = "1.21-changes"}
+mecha = ">=0.94.0"
+bolt = "^0.48.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.beet]
+output = "build"
+
+
+pipeline = [
+    "mecha",
+    "versioning",
+]
+require=[
+    "bolt",
+    "weld_deps",
+]
+
+[tool.beet.meta.mecha]
+multiline = true
+match = ["custom_block_ext:**"]
+
+
+
+[tool.beet.data_pack]
+name = "custom_block_ext_{{ project_version }}_dp_bundled"
+load = "."
+pack_format = 48
+zipped = true
+
+
+[tool.beet.meta.smithed.versioning]
+scheduled_paths="impl/tick"
+
+[tool.beet.meta.smithed.versioning.lantern_load]
+step="load"
+tag_path="load"
+function_path="impl/test_load"
+
+[tool.beet.meta.smithed.versioning.refactor]
+match="custom_block_ext:*"
+find="custom_block_ext:impl/"
+replace="custom_block_ext:v{{ version }}/"
+
+
+[tool.beet.meta.smithed.versioning.api]
+match="custom_block_ext:v{{ version }}"
+implementation_prefix="custom_block_ext:v{{ version }}/"
+version_check_path="v{{ version }}/calls"
+tag_path="calls"
