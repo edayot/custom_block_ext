@@ -28,7 +28,7 @@ class Version(ContextualModel):
 
         return cls(__root__=combined)
 
-    @validator("__root__")
+    @validator("__root__", allow_reuse=True)
     def ensure_version_parts(cls, value: dict[str, int]):
         for name, number in value.items():
             if number < 0:
@@ -77,7 +77,7 @@ class VersioningOptions(ContextualModel, extra="forbid"):
     def render(cls, value: str, values: dict[str, Any]):
         return cls.ctx.template.render_string(value, **values)
 
-    @validator("version", pre=True, always=True)
+    @validator("version", pre=True, always=True, allow_reuse=True)
     def init_version(cls, value: Any, values: dict[str, Any]):
         return value or Version.from_parts(values["schema_"])
 
@@ -98,7 +98,7 @@ class VersioningOptions(ContextualModel, extra="forbid"):
             case _ as val:
                 return val
 
-    @validator("*", pre=True, always=True)
+    @validator("*", pre=True, always=True, allow_reuse=True)
     def render_all(cls, value: JsonType, values: JsonDict):
         """This validator handles the rendering of all structures inside
 
