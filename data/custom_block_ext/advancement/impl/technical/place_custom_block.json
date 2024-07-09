@@ -8,7 +8,7 @@
                         "condition": "minecraft:location_check",
                         "predicate": {
                           "block": {
-                            "blocks": "#smithed.custom_block.ext:placeable",
+                            "blocks": "#custom_block_ext:placeable",
                             "nbt": "{components:{\"minecraft:custom_data\":{smithed:{block:{}}}}}"
                           }
                         }
@@ -18,6 +18,6 @@
         }
     },
     "rewards": {
-        "function": "smithed.custom_block.ext:impl/place"
+        "function": "custom_block_ext:impl/place"
     }
 }

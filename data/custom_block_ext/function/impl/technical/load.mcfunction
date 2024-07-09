@@ -1,5 +1,5 @@
 scoreboard objectives add smithed.data dummy
-scoreboard objectives add smithed.custom_block.ext dummy
+scoreboard objectives add custom_block_ext dummy
 
 scoreboard objectives add smithed.logLevel dummy
 scoreboard objectives add smithed.const dummy
@@ -19,5 +19,5 @@ execute unless block -30000000 0 1602 minecraft:yellow_shulker_box run setblock 
 execute unless block -30000000 0 1603 minecraft:oak_wall_sign run setblock -30000000 0 1603 minecraft:oak_wall_sign[facing=south]
 fill -30000000 1 1600 -30000000 1 1615 minecraft:bedrock
 
-function smithed.custom_block.ext:impl/technical/def_const
+function custom_block_ext:impl/technical/def_const
 
