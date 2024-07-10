@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "custom_block_ext"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["edayot <pro.e.dayot@gmail.com>"]
 license = "MIT"
