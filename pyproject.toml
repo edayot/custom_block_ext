@@ -1,16 +1,16 @@
 [tool.poetry]
 name = "custom_block_ext"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 authors = ["edayot <pro.e.dayot@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-beet = {git = "https://github.com/edayot/beet.git", branch = "1.21-fixes_from_TheNuclearNexus_branch"}
+python = "^3.14"
+beet = ">=0.119.0"
 mecha = ">=0.94.0"
-bolt = "^0.48.0"
+bolt = ">=0.48.0"
 
 
 [build-system]
@@ -40,7 +40,6 @@ match = ["custom_block_ext:**"]
 [tool.beet.data_pack]
 name = "custom_block_ext_{{ project_version }}_dp"
 load = "."
-pack_format = 48
 zipped = true
 
 
@@ -55,11 +54,11 @@ function_path="impl/test_load"
 [tool.beet.meta.smithed.versioning.refactor]
 match="custom_block_ext:*"
 find="custom_block_ext:impl/"
-replace="custom_block_ext:v{{ version }}/"
+replace="custom_block_ext:v{{ project_version }}/"
 
 
 [tool.beet.meta.smithed.versioning.api]
-match="custom_block_ext:v{{ version }}"
-implementation_prefix="custom_block_ext:v{{ version }}/"
-version_check_path="v{{ version }}/calls"
+match="custom_block_ext:v{{ project_version }}"
+implementation_prefix="custom_block_ext:v{{ project_version }}/"
+version_check_path="v{{ project_version }}/calls"
 tag_path="calls"
